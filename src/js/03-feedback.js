@@ -4,12 +4,13 @@ const formEl = document.querySelector(".feedback-form");
 
 formEl.addEventListener("submit", onSubmitForm);
 
+const THROTTLE_WAIT_TIME = 500;
 const STORAGE_KEY = "feedback-form-state";
 const formData = {};
 
 initForm();
 
-formEl.addEventListener("input", throttle(onFormInput, 500));
+formEl.addEventListener("input", throttle(onFormInput, THROTTLE_WAIT_TIME));
 
 function onFormInput(event) {
     formData[event.target.name] = event.target.value;
